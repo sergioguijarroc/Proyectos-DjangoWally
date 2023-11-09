@@ -12,9 +12,20 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <h1>{{ mensaje }}</h1>
-    <a href="{% url 'formulario' %}">Crear nuevo comentario</a>
-    <br>
-    <a href="{% url 'lista_comentarios' %}">Ver comentarios</a>
+    <h1>Lista de comentarios</h1>
+
+<div class="">
+    <ul>
+        {%for comentario in lista %}
+        <li>Nombre: {{ comentario.nombre }} <br>
+            Email:{{comentario.email }} <br>
+            Comentario: {{ comentario.comentario }} <br>
+        </li>
+        {% empty %}
+        <li>No hay comentarios</li>
+        {%endfor%}
+        <li><a href="{% url 'formulario' %}">Crear nuevo comentario</a></li>
+    </ul>
+</div>
 </body>
 </html>
