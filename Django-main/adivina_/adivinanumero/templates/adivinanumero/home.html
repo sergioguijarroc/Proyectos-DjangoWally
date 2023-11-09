@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <h1>Welcome to the numer </h1>
+    <form action="{% url 'guess' %}" method="post">
+        {% csrf_token %}
+        <label for="">Dime un número del 1 al 100</label>
+        <input type="number" name="guess" required>
+        <button type="submit">Generar</button>
+    </form>
+</body>
+</html>
