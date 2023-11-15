@@ -7,4 +7,4 @@ class Task(models.Model):
     done=models.BooleanField(default=False)
     
     def __str__(self):
-        return self.name
+        return f"Tarea  {self.name}"

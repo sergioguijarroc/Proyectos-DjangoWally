@@ -1,0 +1,50 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+    <title>Lista de Tareas</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+</head>
+
+<body>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                {% block form %}
+                {% endblock %}
+                <h1>Tareas</h1>
+                <a href="{% url 'task_form' %}">Nueva tarea</a>
+            </div>
+        </div>
+        <br>
+        <div class="task">
+            <ul>
+                {%for task in tasks %}
+                <li>{{ task.name }} - {{ task.description }} <br>
+
+                    ¿Está hecha?
+                    <br>
+                    ({{ task.done|yesno:"Sí,No" }})
+                    <br>
+                    <a class="btn btn-primary" href="{% url 'task_num' pk=task.pk %}">Enlace a
+                            {{task.name}}</a></button>
+                </li>
+                {% empty %}
+                <li>No hay tareas por hacer</li>
+                {%endfor%}
+
+            </ul>
+        </div>
+        {% block content %}
+        {% endblock %}
+
+</body>
+
+</html>
