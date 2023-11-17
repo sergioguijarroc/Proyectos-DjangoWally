@@ -1,0 +1,14 @@
+{% extends 'books/base.html' %}
+{% block title %}Book {{book.title}}{% endblock %}
+{% block content %}
+<h1>{{ book.title }}</h1>
+<h2>Author - {{book.author}}</h2>
+<p>{{ book.resume }}</p>
+<h3 class="text-warning">{{ book.rating }} stars</h3>
+<a class="btn btn-primary" href="{% url 'edit' pk=book.pk %}">Edit book</a>
+<a class="btn btn-secondary" href="{% url 'list' %}">Back to book list </a>
+
+<!--{% if user.is_authenticated %}-->
+<!--{% endif %}-->
+
+{% endblock %}

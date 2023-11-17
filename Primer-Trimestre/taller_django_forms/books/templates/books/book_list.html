@@ -1,44 +1,21 @@
-<!DOCTYPE html>
-<html>
+{% extends 'books/base.html' %}
+{%block title%}Book list{% endblock %}
+{% block content %}
+<h1>Books List</h1>
+<a href="{% url 'form' %}">New book</a>
+<ul>
+    {%for book in book_list %}
+    <li>
+        <h2>{{ book.title }}</h2>
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-    <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-    <title>Listado de libros</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-</head>
-
-<body>
-    <div class="content container">
-        <div class="row">
-            <div class="col-md-8">
-                <h1>Libros</h1>
-                <a href="{% url 'form' %}">Nuevo libro</a>
-            </div>
-        </div>
-        <br>
-        <div class="book">
-            <ul>
-                {%for book in books %}
-                <li>
-                    <h2>{{ book.title }}</h2>
-
-                    <h3>Author - {{ book.author }}</h3>
-                    <h4 class="text-warning">{{ book.rating }} estrellas</h4>
-                    <p>{{book.resume}}</p>
-                    <a class="btn btn-primary" href="{% url 'book' pk=book.pk %}">Enlace a
-                        {{book.title}}</a></button>
-                </li>
-                {% empty %}
-                <li>No hay libros en la bibiloteca</li>
-                {%endfor%}
-
-            </ul>
-        </div>
-</body>
-
-</html>
+        <h3>Author - {{ book.author }}</h3>
+        <h4 class="text-warning">{{ book.rating }} estrellas</h4>
+        <p>{{book.resume}}</p>
+        <a class="btn btn-primary" href="{% url 'book' pk=book.pk %}">Go to 
+            {{book.title}}</a></button>
+    </li>
+    {% empty %}
+    <li>The library is empty</li>
+    {%endfor%}
+</ul>
+{% endblock %}
