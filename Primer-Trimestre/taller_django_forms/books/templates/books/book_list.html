@@ -13,6 +13,7 @@
         <p>{{book.resume}}</p>
         <a class="btn btn-primary" href="{% url 'book' pk=book.pk %}">Go to 
             {{book.title}}</a></button>
+            <a class="btn btn-danger" href="{% url 'delete' pk=book.pk  %}">Delete book </a>
     </li>
     {% empty %}
     <li>The library is empty</li>

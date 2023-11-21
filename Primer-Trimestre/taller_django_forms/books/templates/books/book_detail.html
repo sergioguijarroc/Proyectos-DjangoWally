@@ -5,8 +5,9 @@
 <h2>Author - {{book.author}}</h2>
 <p>{{ book.resume }}</p>
 <h3 class="text-warning">{{ book.rating }} stars</h3>
-<a class="btn btn-primary" href="{% url 'edit' pk=book.pk %}">Edit book</a>
+<a class="btn btn-primary" href="{% url 'update' pk=book.pk %}">Edit book</a>
 <a class="btn btn-secondary" href="{% url 'list' %}">Back to book list </a>
+<a class="btn btn-danger" href="{% url 'delete' pk=book.pk  %}">Delete book </a>
 
 <!--{% if user.is_authenticated %}-->
 <!--{% endif %}-->
