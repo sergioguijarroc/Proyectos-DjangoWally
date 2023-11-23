@@ -27,7 +27,7 @@ class Create_book(CreateView):
     model=Book
     fields="__all__"
     success_url = reverse_lazy("list")
-    queryset = formset_factory(BookForm,extra=2)
+    queryset = 
 
 
     
