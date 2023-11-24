@@ -8,7 +8,5 @@ class Usuario(AbstractUser):
     telefono=models.IntegerField(validators=[MaxValueValidator(9)])
 class Libro(models.Model):
     título=models.TextField()
-    autor=models.ManyToManyField.db_column()
-    
     
 # Create your models here.
